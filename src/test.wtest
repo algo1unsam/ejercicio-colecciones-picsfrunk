@@ -1,9 +1,38 @@
 import capos.*
 
-test "encontrar artefactos" {
-	
+test "encontrar artefactos 1" {
+	rolando.encuentra(espada)
+	assert.that(rolando.tiene(espada))
+	rolando.encuentra(libro)
+	rolando.encuentra(collar)
+	assert.that(rolando.tiene(libro))
+	assert.notThat(rolando.tiene(collar))
+	rolando.llega()
+	rolando.encuentra(collar)
+	assert.that(rolando.tiene(collar))
+	rolando.llega()
+	assert.equals(#{libro, collar, espada}, rolando.tiene())
 }
 
+test "encontrar artefactos 2" {
+	rolando.encuentra(espada)
+	assert.that(rolando.tiene(espada))
+	rolando.encuentra(libro)
+	rolando.encuentra(collar)
+	assert.that(rolando.tiene(libro))
+	assert.notThat(rolando.tiene(collar))
+	rolando.llega()
+	rolando.encuentra(collar)
+	assert.that(rolando.tiene(collar))
+	rolando.llega()
+	assert.equals(#{libro, collar, espada}, rolando.tiene())
+	rolando.encuentra(armadura)
+	assert.that(rolando.tiene(armadura))
+	rolando.encuentra(collar)
+	assert.that(rolando.tiene(collar))
+	assert.equals([espada, libro, collar, armadura, collar], rolando.registro())	
+}
+/* 
 test "castillo" {
 	
 }
@@ -15,3 +44,4 @@ test "posesiones" {
 test "historia" {
 	
 }
+*/
